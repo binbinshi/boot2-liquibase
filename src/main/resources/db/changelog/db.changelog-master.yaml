@@ -1,0 +1,66 @@
+databaseChangeLog:
+- changeSet:
+    id: 1
+    author: root
+    context: prod
+    changes:
+    - sqlFile:
+        runOnChange: true
+        encoding: utf8
+        stripComments: true
+        path: classpath:/db/changelog/sqlfile/2018-06-05.sql
+- changeSet:
+    id: 2
+    author: root
+    context: prod
+    changes:
+    - sqlFile:
+        runOnChange: true
+        encoding: utf8
+        stripComments: true
+        path: classpath:/db/changelog/sqlfile/2019-04-03.sql
+- changeSet:
+    id: 3
+    author: root
+    context: prod
+    changes:
+    - sqlFile:
+        runOnChange: true
+        encoding: utf8
+        stripComments: true
+        path: classpath:/db/changelog/sqlfile/2020-02-18.sql
+
+- changeSet:
+    id: 4
+    author: root
+    context: prod
+    changes:
+      - createTable:
+          tableName: person
+          catalogName: test_db
+          columns:
+           - column:
+               name: id
+               type: int
+               autoIncrement: true
+               constraints:
+                 primaryKey: true
+                 nullable: false
+           - column:
+               name: id_num
+               type: varchar(50)
+               defaultValue: "110001111345677"
+               remarks: "人员身份信息"
+           - column:
+               name: location
+               type: varchar(200)
+
+- changeSet:
+    id: 5
+    author: root
+    context: dev
+    changes:
+      - dropTable:
+          catalogName: test_db
+          tableName: person
+
